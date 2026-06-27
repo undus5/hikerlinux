@@ -25,7 +25,7 @@ ROOT_FS=$(realpath $ROOT_FS)
 
 SELF_DIR=$(dirname $(realpath ${BASH_SOURCE[0]}))
 PROJ_DIR=$(dirname $SELF_DIR)
-ISO_SRC=${PROJ_DIR}/iso.live
+ISO_SRC=${PROJ_DIR}/iso.d
 WORK_DIR=$(dirname $ROOT_FS)
 ISO_DIR=${WORK_DIR}/$(basename $ROOT_FS).iso.d
 LIVE_IMG_DIR=${ISO_DIR}/LiveOS

@@ -1,0 +1,14 @@
+patch:
+  menu:
+    page_size: 7
+  ascii_composer:
+    switch_key:
+      Shift_L: commit_code
+      Shift_R: commit_code
+  switcher/hotkeys:
+    - "Control+grave"
+    - "Control+Alt+grave"
+  schema_list:
+    - schema: wubi86s
+    # - schema: pinyin_simp
+    # - schema: emojis
