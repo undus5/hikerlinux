@@ -1,0 +1,19 @@
+################################################################################
+
+alias ..="cd .."
+alias cdd="cd ~/Downloads"
+alias cdw="cd ~/b/works"
+
+# https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+PTH=~/.config/sway/bins
+PTH+=:~/a/bins
+PTH+=:~/b/bins
+PTH+=:~/upk.d/bins
+export PATH=${PTH}:${PATH}
+
+which env_vars.sh &>/dev/null && source $(which env_vars.sh)
+
+[[ -z "$WAYLAND_DISPLAY" ]] && [[ "$XDG_VTNR" -eq 1 ]] && kmscon-launch-gui sway

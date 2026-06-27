@@ -1,0 +1,73 @@
+#!/bin/bash
+
+################################################################################
+# Common
+################################################################################
+
+# common package names
+
+COMM_PKGS=" kbd bash bash-completion util-linux coreutils "
+COMM_PKGS+=" e2fsprogs btrfs-progs parted cryptsetup "
+COMM_PKGS+=" less gawk sed man-db tzdata fontconfig curl neovim "
+COMM_PKGS+=" systemd dracut kmscon seatd "
+
+COMM_DESK_PKGS=" sway swaylock swaybg labwc wl-clipboard mako fuzzel wmenu "
+COMM_DESK_PKGS+=" xdg-desktop-portal-gtk grim kanshi pavucontrol "
+COMM_DESK_PKGS+=" nautilus gvfs ifuse 7zip hicolor-icon-theme "
+COMM_DESK_PKGS+=" pipewire swayimg mpv zathura zathura-pdf-poppler "
+COMM_DESK_PKGS+=" foot alacritty mate-polkit fcitx5 linux-firmware "
+
+################################################################################
+# Fedora
+################################################################################
+
+FEDORA_BASE_PKGS="$COMM_PKGS"
+FEDORA_BASE_PKGS+=" procps-ng iputils filesystem "
+FEDORA_BASE_PKGS+=" systemd-resolved systemd-networkd zram-generator "
+FEDORA_BASE_PKGS+=" dracut-live kmscon-freetype shadow-utils iproute "
+FEDORA_BASE_PKGS+=" vim-minimal vim-default-editor openssh-clients xorriso "
+FEDORA_BASE_PKGS+=" glibc-all-langpacks jetbrains-mono-nl-fonts "
+FEDORA_BASE_PKGS+=" dnf5 dnf5-plugins kernel audit rootfiles "
+
+FEDORA_DESK_PKGS="${FEDORA_BASE_PKGS} ${COMM_DESK_PKGS}"
+FEDORA_DESK_PKGS+=" google-noto-fonts-all google-noto-color-emoji-fonts "
+FEDORA_DESK_PKGS+=" google-noto-sans-cjk-fonts google-noto-serif-cjk-fonts "
+FEDORA_DESK_PKGS+=" gvfs-mtp gvfs-gphoto2 gvfs-afc qt6pas "
+FEDORA_DESK_PKGS+=" fcitx5-gtk fcitx5-qt fcitx5-configtool fcitx5-rime "
+FEDORA_DESK_PKGS+=" pipewire-utils openssh-server "
+FEDORA_DESK_PKGS+=" amd-ucode-firmware iwlwifi-mvm-firmware "
+
+################################################################################
+# ArchLinux
+################################################################################
+
+ARCHLINUX_BASE_PKGS="$COMM_PKGS"
+ARCHLINUX_BASE_PKGS+=" base procps-ng iputils filesystem "
+ARCHLINUX_BASE_PKGS+=" zram-generator openssh vim ttf-jetbrains-mono "
+ARCHLINUX_BASE_PKGS+=" pacman linux libisoburn arch-install-scripts "
+
+ARCHLINUX_DESK_PKGS="${ARCHLINUX_BASE_PKGS} ${COMM_DESK_PKGS}"
+ARCHLINUX_DESK_PKGS+=" noto-fonts noto-fonts-cjk noto-fonts-emoji "
+ARCHLINUX_DESK_PKGS+=" pipewire-alsa pipewire-pulse pipewire-jack wireplumber "
+ARCHLINUX_DESK_PKGS+=" gvfs-mtp gvfs-gphoto2 gvfs-afc qt6pas "
+ARCHLINUX_DESK_PKGS+=" fcitx5-gtk fcitx5-qt fcitx5-configtool fcitx5-rime "
+ARCHLINUX_DESK_PKGS+=" amd-ucode intel-ucode "
+ARCHLINUX_DESK_PKGS+=" mesa vulkan-radeon vulkan-intel intel-media-driver "
+
+################################################################################
+# Ubuntu
+################################################################################
+
+UBUNTU_BASE_PKGS="$COMM_PKGS"
+UBUNTU_BASE_PKGS+=" systemd-resolved systemd-cryptsetup procps locales-all "
+UBUNTU_BASE_PKGS+=" systemd-zram-generator vim fonts-jetbrains-mono "
+UBUNTU_BASE_PKGS+=" debootstrap linux-generic openssh-client "
+
+UBUNTU_DESK_PKGS="${UBUNTU_BASE_PKGS} ${COMM_DESK_PKGS}"
+UBUNTU_DESK_PKGS+=" pipewire pipewire-audio pipewire-jack "
+UBUNTU_DESK_PKGS+=" fonts-noto-hinted fonts-noto-cjk fonts-noto-color-emoji "
+UBUNTU_DESK_PKGS+=" fonts-noto-mono "
+UBUNTU_DESK_PKGS+=" gvfs-backends libqt6pas6 openssh-server "
+UBUNTU_DESK_PKGS+=" fcitx5-frontend-all fcitx5-config-qt "
+UBUNTU_DESK_PKGS+=" amd64-microcode intel-microcode "
+UBUNTU_DESK_PKGS+=" mesa-va-drivers mesa-vulkan-drivers intel-media-va-drivers "
