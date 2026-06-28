@@ -13,7 +13,7 @@ COMM_PKGS+=" systemd dracut kmscon seatd "
 
 COMM_DESK_PKGS=" sway swaylock swaybg labwc wl-clipboard mako fuzzel wmenu "
 COMM_DESK_PKGS+=" xdg-desktop-portal-gtk grim kanshi pavucontrol "
-COMM_DESK_PKGS+=" nautilus gvfs ifuse 7zip hicolor-icon-theme plymouth "
+COMM_DESK_PKGS+=" nautilus gvfs ifuse 7zip hicolor-icon-theme "
 COMM_DESK_PKGS+=" pipewire swayimg mpv zathura zathura-pdf-poppler "
 COMM_DESK_PKGS+=" foot alacritty mate-polkit fcitx5 linux-firmware "
 
