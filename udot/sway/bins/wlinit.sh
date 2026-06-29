@@ -26,6 +26,7 @@ if [[ -d ~/.icons/Qogir-Dark ]]; then
     gsettings set org.gnome.desktop.interface icon-theme Qogir-Dark
 fi
 
+# https://www.toptal.com/designers/subtlepatterns/
 BG_FILE=$(find ~/Pictures/ -maxdepth 1 -type f -name 'wallpaper-*.png')
 BG_FILE=$(echo $BG_FILE | head -n 1)
 if [[ ! -f $BG_FILE ]]; then
