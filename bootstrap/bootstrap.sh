@@ -66,27 +66,35 @@ vfs_chroot() {
 #    return
 # }
 
-bootstrap_post_archlinux() {
+bootstrap_post() {
    local EMPTY_DIR=$(test_empty_dir ${ROOT_FS}/usr)
    [[ -z "$EMPTY_DIR" ]] || errf "==> root.fs is empty: $ROOT_FS"
-   # archlinux locales
-   if [[ -e ${ROOT_FS}/usr/bin/locale-gen ]]; then
+   #############################################################################
+   # fedora
+   #############################################################################
+   if [[ "$BASE_PKGS" =~ "dnf5" ]]; then
       vfs_mount
-      vfs_chroot locale-gen
+      # clean package cache
+      vfs_chroot dnf clean packages
       vfs_umount
    fi
-   # archlinux /root/.bashrc
-   if [[ ! -e ${ROOT_FS}/root/.bashrc ]]; then
+   #############################################################################
+   # archlinux
+   #############################################################################
+   if [[ "$BASE_PKGS" =~ "pacman" ]]; then
+      vfs_mount
+      vfs_chroot locale-gen
+      # clean package cache
+      vfs_chroot paccache -rk0
+      vfs_umount
+      # /root/.bashrc
       cp -rfP ${ROOT_FS}/etc/skel/.* ${ROOT_FS}/root/
       echo "==> copied 'root.fs/etc/skel/*' to 'root.fs/root/'"
    fi
-}
-
-bootstrap_post_ubuntu() {
-   local EMPTY_DIR=$(test_empty_dir ${ROOT_FS}/usr)
-   [[ -z "$EMPTY_DIR" ]] || errf "==> root.fs is empty: $ROOT_FS"
-   # ubuntu is such a mess
-   if [[ "$BASE_PKGS" =~ "linux-generic" ]]; then
+   #############################################################################
+   # ubuntu
+   #############################################################################
+   if [[ "$BASE_PKGS" =~ "debootstrap" ]]; then
       vfs_mount
       # restore to OG GNU coreutils
       # since uutils 'stat -c %m' return empty in chroot
@@ -96,13 +104,13 @@ bootstrap_post_ubuntu() {
       # replace chrony with systemd-timesyncd
       vfs_chroot apt-get -y purge chrony
       vfs_chroot apt-get -y install systemd-timesyncd
+      # clean package cache
+      vfs_chroot apt autoclean
       vfs_umount
    fi
-}
-
-bootstrap_post() {
-   local EMPTY_DIR=$(test_empty_dir ${ROOT_FS}/usr)
-   [[ -z "$EMPTY_DIR" ]] || errf "==> root.fs is empty: $ROOT_FS"
+   #############################################################################
+   # common
+   #############################################################################
    systemctl --root $ROOT_FS disable getty@.service
    systemctl --root $ROOT_FS enable kmsconvt@.service
    systemctl --root $ROOT_FS enable systemd-resolved.service
@@ -125,8 +133,6 @@ case "$SUB_CMD" in
       cp -rfP ${PROJ_DIR}/root.live/* ${ROOT_FS}/
       echo "==> copied 'root.live/*' to 'root.fs'"
 
-      bootstrap_post_archlinux
-      bootstrap_post_ubuntu
       bootstrap_post
 
       vfs_mount
@@ -164,8 +170,6 @@ case "$SUB_CMD" in
       cp -rfP ${PROJ_DIR}/root.desk/* ${ROOT_FS}/
       echo "==> copied 'root.desk/*' to 'root.fs'"
 
-      bootstrap_post_archlinux
-      bootstrap_post_ubuntu
       bootstrap_post
 
       vfs_mount

@@ -13,7 +13,7 @@ COMM_PKGS+=" systemd dracut kmscon seatd "
 
 COMM_DESK_PKGS=" sway swaylock swaybg labwc wl-clipboard mako fuzzel wmenu "
 COMM_DESK_PKGS+=" xdg-desktop-portal-gtk grim kanshi pavucontrol "
-COMM_DESK_PKGS+=" nautilus gvfs ifuse 7zip hicolor-icon-theme "
+COMM_DESK_PKGS+=" nautilus gvfs ifuse 7zip hicolor-icon-theme xdg-user-dirs "
 COMM_DESK_PKGS+=" pipewire swayimg mpv zathura zathura-pdf-poppler "
 COMM_DESK_PKGS+=" foot alacritty mate-polkit fcitx5 linux-firmware "
 
@@ -45,7 +45,7 @@ FEDORA_DESK_PKGS+=" amd-ucode-firmware iwlwifi-mvm-firmware "
 ARCHLINUX_BASE_PKGS="$COMM_PKGS"
 ARCHLINUX_BASE_PKGS+=" base procps-ng iputils filesystem "
 ARCHLINUX_BASE_PKGS+=" zram-generator openssh vim ttf-jetbrains-mono "
-ARCHLINUX_BASE_PKGS+=" pacman linux libisoburn arch-install-scripts "
+ARCHLINUX_BASE_PKGS+=" pacman-contrib linux libisoburn arch-install-scripts "
 
 ARCHLINUX_DESK_PKGS="${ARCHLINUX_BASE_PKGS} ${COMM_DESK_PKGS}"
 ARCHLINUX_DESK_PKGS+=" noto-fonts noto-fonts-cjk noto-fonts-emoji "
