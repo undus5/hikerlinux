@@ -36,8 +36,8 @@ vfs_mount() {
    [[ -n "$ROOT_FS" ]] || errf "==> \$ROOT_FS undefined"
    for DIR in dev proc run sys; do
       if [[ "$DIR" == "proc" ]]; then
-         findmnt $ROOT_FS/$DIR &>/dev/null || \
-            mount --mkdir /$DIR $ROOT_FS/$DIR
+         findmnt $ROOT_FS/proc &>/dev/null || \
+            mount --mkdir --types proc /proc $ROOT_FS/proc
       else
          findmnt $ROOT_FS/$DIR &>/dev/null || \
             mount --mkdir --rbind --make-rslave /$DIR $ROOT_FS/$DIR
