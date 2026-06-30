@@ -35,8 +35,13 @@ test_empty_dir() {
 vfs_mount() {
    [[ -n "$ROOT_FS" ]] || errf "==> \$ROOT_FS undefined"
    for DIR in dev proc run sys; do
-      findmnt $ROOT_FS/$DIR &>/dev/null || \
-         mount --mkdir --rbind --make-rslave /$DIR $ROOT_FS/$DIR
+      if [[ "$DIR" == "proc" ]]; then
+         findmnt $ROOT_FS/$DIR &>/dev/null || \
+            mount --mkdir /$DIR $ROOT_FS/$DIR
+      else
+         findmnt $ROOT_FS/$DIR &>/dev/null || \
+            mount --mkdir --rbind --make-rslave /$DIR $ROOT_FS/$DIR
+      fi
    done
 }
 
