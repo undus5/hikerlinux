@@ -64,8 +64,8 @@ vol-down() {
    per=${1:-5}
    wpctl set-volume @DEFAULT_AUDIO_SINK@ ${per}%-
    local vol=$(vol-num $(vol-get @DEFAULT_AUDIO_SINK@))
-   # wobctl.sh $vol
-   vol-notify $vol
+   wobctl.sh $vol
+   # vol-notify $vol
 }
 
 vol-up() {
@@ -73,18 +73,18 @@ vol-up() {
    per=${1:-5}
    wpctl set-volume @DEFAULT_AUDIO_SINK@ ${per}%+
    local vol=$(vol-num $(vol-get @DEFAULT_AUDIO_SINK@))
-   # wobctl.sh $vol
-   vol-notify $vol
+   wobctl.sh $vol
+   # vol-notify $vol
 }
 
 mute-toggle-speaker() {
    command-check wpctl
    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
    local vol=$(vol-num $(vol-get @DEFAULT_AUDIO_SINK@))
-   # wobctl.sh $vol
-   local msg=
-   [[ "$vol" == "0" ]] && msg="Speaker Muted"
-   vol-notify "$vol" "$msg"
+   wobctl.sh $vol
+   # local msg=
+   # [[ "$vol" == "0" ]] && msg="Speaker Muted"
+   # vol-notify "$vol" "$msg"
 }
 
 mute-toggle-mic() {
